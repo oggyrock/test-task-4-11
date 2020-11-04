@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAgetic AI Admin panel</title>
+  </head>
+  <body>
+    <input class="sidebar-toggle" type="checkbox" id="sidebar-toggle">
+    <div class="sidebar">
+      <div class="sidebar-logo-wrapper">
+        <img class="sidebar-logo" src="./logo.png" alt="logo">
+        <label for="sidebar-toggle">
+          <div class="menu-button"></div>
+        </label>
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#">CAS Interface</a></li>
+          <li><a href="#">Jira system</a></li>
+          <li><a href="#">BitBucket</a></li>
+          <li><a href="#">Qa system</a></li>
+          <li><a href="#">Slack</a></li>
+          <li><a href="#">Ads system</a></li>
+          <li><a href="#">admin status</a></li>
+          <li><a href="#">adv</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main class="main-page">
+      <header class="header">
+        <div class="search-wrapper">
+          <label for="search">
+            <img class="search-icon" src="./loupe.svg" alt="search icon">
+          </label>
+          <input id="search" class="search-field" type="text">
+        </div>
+        <div class="icon-wrapper">
+          <img class="message-icon" src="./chat.svg" alt="send us a message">
+          <img class="notification-icon" src="./bell.svg" alt="enable notifications">
+          <img class="user-icon" src="./user.svg" alt="user menu">
+        </div>
+      </header>
+      <div class="deco-block"></div>
+      <div class="content-wrapper">
+        <div class="content-block1">
+          <div class="block-header">
+            Activity
+            <select class="activity-filter"></select>
+          </div>
+          <hr class="splitter">
+          <div class="block-content">
+          </div>
+        </div>
+        <div class="content-block2">
+          <div class="block-header">
+            Vehicles
+            <div class="filter-wrapper">
+              <input class="list" type="radio" name="vehicles-view" id="list">
+              <label for="list">
+                <img class="filter-icon" src="./list.svg" alt="">
+              </label>
+              <input class="map" type="radio" name="vehicles-view" id="map">
+              <label for="map">
+                <img class="filter-icon" src="./map.svg" alt="map icon">
+              </label>
+            </div>
+          </div>
+          <hr class="splitter">
+          <div class="block-content">
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <style>
+    body, ul, li {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f1f0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    body {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .main-page {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-left: 100px;
+    }
+
+    .sidebar {
+      position: absolute;
+      background-color: #333f4e;
+      width: 100px;
+      height: 100vh;
+      overflow: hidden;
+      transition: width 1s;
+    }
+
+    .sidebar-toggle {
+      position: relative;
+      display: none;
+    }
+
+    .sidebar-logo-wrapper {
+      display: flex;
+      flex-direction: row;
+      height: 40px;
+    }
+
+    .sidebar-toggle:checked + .sidebar {
+      width: 220px;
+    }
+
+    .sidebar-logo {
+      width: 150px;
+      display: none;
+      padding: 10px;
+    }
+
+    .sidebar-toggle:checked + .sidebar .sidebar-logo {
+      display: inline;
+    }
+
+    .menu-button {
+      position: absolute;
+      top: 15px;
+      right: 0;
+      display: block;
+      height: 3px;
+      width: 30px;
+      background-color: white;
+      margin: 5px 10px;
+      cursor: pointer;
+      transition: background-color 1s;
+    }
+
+    .menu-button::before {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      bottom: 11px;
+      transition: all 1s;
+    }
+
+    .menu-button::after{
+      position: absolute;
+      display: block;
+      content: '';
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      top: 11px;
+      transition: all 1s;
+    }
+
+    .sidebar-toggle:checked + .sidebar .menu-button {
+      background-color: transparent;
+    }
+
+    .sidebar-toggle:checked + .sidebar .menu-button::before {
+      transform-origin: bottom left;
+      transform: rotate(45deg);
+    }
+
+    .sidebar-toggle:checked + .sidebar .menu-button::after {
+      transform-origin: top left;
+      transform: rotate(-45deg);
+    }
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 40px;
+      background-color: white;
+    }
+
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-list {
+      list-style: none;
+      background-color: #333f4e;
+    }
+
+    .nav-list > li {
+      background-color: #384756;
+      padding: 10px;
+      margin: 2px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .deco-block {
+      width: 300px;
+      height: 10px;
+      background-color: white;
+      border-radius: 5px;
+      margin: 10px 5px;
+    }
+
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .content-wrapper div {
+      background-color: white;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    .search-icon,
+    .message-icon,
+    .notification-icon,
+    .user-icon {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .search-field {
+      border: 0;
+      outline: 0;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .search-field:focus {
+      border-bottom: 1px solid gray;
+    }
+
+    .filter-icon {
+      width: 20px;
+      height: 20px;
+      padding: 5px 0;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .list,
+    .map {
+      display: none;
+    }
+
+    .list:checked + label .filter-icon,
+    .map:checked + label .filter-icon {
+      border-bottom: 2px solid gray;
+    }
+
+
+    .block-header {
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .block-header {
+      color: #b2b9bd;
+    }
+
+    .block-content {
+      height: 300px;
+    }
+
+    .splitter {
+      border: 1px solid #b2b9bd;
+    }
+  </style>
+</html>
